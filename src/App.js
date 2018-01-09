@@ -6,6 +6,8 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import withWeather from './withWeather';
+import type { ForecastType } from './models/Forecast';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n Cmd+D or shake for dev menu',
@@ -14,7 +16,17 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+type Props = {
+  data: ?Array<ForecastType>,
+  isFetching: boolean,
+  fetchWeatherData: () => {},
+};
+
+class App extends Component<Props> {
+  componentDidMount() {
+    this.props.fetchWeatherData();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -44,3 +56,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default withWeather(App);
