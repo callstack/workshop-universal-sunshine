@@ -1,8 +1,9 @@
 /* @flow */
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import type { ForecastType } from './models/Forecast';
+import { getIcon } from './imageUtils';
 
 type Props = {
   item: ForecastType,
@@ -22,11 +23,20 @@ const ListItem = (props: Props) => {
   const { item } = props;
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.highlightText}>
-          {days[new Date(item.date).getDay()]}
-        </Text>
-        <Text style={styles.secondaryText}>{item.day.condition.text}</Text>
+      <View style={[styles.contentLeft, styles.shrink]}>
+        <Image style={styles.icon} source={getIcon(item.day.condition.code)} />
+        <View style={styles.shrink}>
+          <Text style={styles.highlightText}>
+            {days[new Date(item.date).getDay()]}
+          </Text>
+          <Text
+            style={styles.secondaryText}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {item.day.condition.text}
+          </Text>
+        </View>
       </View>
       <View>
         <Text style={styles.highlightText}>{`${Math.round(
@@ -45,6 +55,19 @@ const styles = StyleSheet.create({
     padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  contentLeft: {
+    flexDirection: 'row',
+    paddingRight: 8,
+  },
+  shrink: {
+    flexShrink: 1,
+  },
+  icon: {
+    height: 36,
+    width: 36,
+    alignSelf: 'center',
+    marginRight: 16,
   },
   highlightText: {
     lineHeight: 24,

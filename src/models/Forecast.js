@@ -5,7 +5,7 @@ export type ForecastType = {
   date_epoch: number,
   day: {
     condition: {
-      icon: string,
+      code: number,
       text: string,
     },
     maxtemp_f: number,
