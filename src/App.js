@@ -6,6 +6,7 @@ import { StyleSheet, StatusBar, View } from 'react-native';
 import withWeather from './withWeather';
 import ListItem from './ListItem';
 import type { ForecastType } from './models/Forecast';
+import TodayHeader from './TodayHeader';
 
 type Props = {
   data: ?Array<ForecastType>,
@@ -24,7 +25,7 @@ class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.todayContainer} />
+        <TodayHeader today={(data && data[0]) || null} />
         <View>
           {data &&
             data
@@ -40,10 +41,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEEEEE',
-  },
-  todayContainer: {
-    height: 200,
-    backgroundColor: '#1ca8f4',
   },
 });
 

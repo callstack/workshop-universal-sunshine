@@ -1,5 +1,6 @@
 /* @flow */
 
+export const getArt = (code: number) => images(code.toString()).art;
 export const getIcon = (code: number) => images(code.toString()).icon;
 
 /* eslint-disable global-require */
