@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import type { ForecastType } from './models/Forecast';
-import { getArt } from './imageUtils';
+import type { ForecastType } from '../models/Forecast';
+import { getArt } from '../utils/imageUtils';
 
 type Props = {
   today: ?ForecastType,
@@ -60,8 +60,8 @@ const TodayHeader = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    paddingVertical: 48,
+    height: 150,
+    paddingVertical: 8,
     paddingLeft: 16 + 16 + 36, // To align with list items
     paddingRight: 32,
     backgroundColor: '#1ca8f4',

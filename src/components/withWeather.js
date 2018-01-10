@@ -1,8 +1,8 @@
 /* @flow */
 
 import * as React from 'react';
-import { APIXU_API_KEY } from '../secrets';
-import type { ForecastType } from './models/Forecast';
+import { APIXU_API_KEY } from '../../secrets';
+import type { ForecastType } from '../models/Forecast';
 
 type State = {
   isFetching: boolean,

@@ -8,27 +8,27 @@ const images = (code: string) => {
   switch (code) {
     case '1000': {
       return {
-        art: require('./icons/art_clear.png'),
-        icon: require('./icons/ic_clear.png'),
+        art: require('../icons/art_clear.png'),
+        icon: require('../icons/ic_clear.png'),
       };
     }
     case '1003':
       return {
-        art: require('./icons/art_light_clouds.png'),
-        icon: require('./icons/ic_light_clouds.png'),
+        art: require('../icons/art_light_clouds.png'),
+        icon: require('../icons/ic_light_clouds.png'),
       };
     case '1006':
     case '1009':
       return {
-        art: require('./icons/art_clouds.png'),
-        icon: require('./icons/ic_cloudy.png'),
+        art: require('../icons/art_clouds.png'),
+        icon: require('../icons/ic_cloudy.png'),
       };
     case '1030':
     case '1135':
     case '1147':
       return {
-        art: require('./icons/art_fog.png'),
-        icon: require('./icons/ic_fog.png'),
+        art: require('../icons/art_fog.png'),
+        icon: require('../icons/ic_fog.png'),
       };
     case '1063':
     case '1069':
@@ -44,8 +44,8 @@ const images = (code: string) => {
     case '1249':
     case '1261':
       return {
-        art: require('./icons/art_light_rain.png'),
-        icon: require('./icons/ic_light_rain.png'),
+        art: require('../icons/art_light_rain.png'),
+        icon: require('../icons/ic_light_rain.png'),
       };
     case '1066':
     case '1072':
@@ -60,8 +60,8 @@ const images = (code: string) => {
     case '1255':
     case '1258':
       return {
-        art: require('./icons/art_snow.png'),
-        icon: require('./icons/ic_snow.png'),
+        art: require('../icons/art_snow.png'),
+        icon: require('../icons/ic_snow.png'),
       };
     case '1087':
     case '1237':
@@ -71,8 +71,8 @@ const images = (code: string) => {
     case '1279':
     case '1282':
       return {
-        art: require('./icons/art_storm.png'),
-        icon: require('./icons/ic_storm.png'),
+        art: require('../icons/art_storm.png'),
+        icon: require('../icons/ic_storm.png'),
       };
     case '1168':
     case '1171':
@@ -84,8 +84,8 @@ const images = (code: string) => {
     case '1246':
     case '1252':
       return {
-        art: require('./icons/art_rain.png'),
-        icon: require('./icons/ic_rain.png'),
+        art: require('../icons/art_rain.png'),
+        icon: require('../icons/ic_rain.png'),
       };
     default:
       return {

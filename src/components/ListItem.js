@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import type { ForecastType } from './models/Forecast';
-import { getIcon } from './imageUtils';
+import type { ForecastType } from '../models/Forecast';
+import { getIcon } from '../utils/imageUtils';
 
 type Props = {
   item: ForecastType,
