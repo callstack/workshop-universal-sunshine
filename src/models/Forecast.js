@@ -2,6 +2,7 @@
 
 export type ForecastType = {
   date: string,
+  date_epoch: number,
   day: {
     condition: {
       icon: string,

@@ -1,25 +1,16 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+/* @flow */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import withWeather from './withWeather';
-import type { ForecastType } from './models/Forecast';
+import { StyleSheet, StatusBar, View } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import withWeather from './withWeather';
+import ListItem from './ListItem';
+import type { ForecastType } from './models/Forecast';
 
 type Props = {
   data: ?Array<ForecastType>,
   isFetching: boolean,
-  fetchWeatherData: () => {},
+  fetchWeatherData: () => void,
 };
 
 class App extends Component<Props> {
@@ -28,11 +19,18 @@ class App extends Component<Props> {
   }
 
   render() {
+    const { data } = this.props;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <StatusBar barStyle="light-content" />
+        <View style={styles.todayContainer} />
+        <View>
+          {data &&
+            data
+              .slice(1)
+              .map(item => <ListItem key={item.date_epoch} item={item} />)}
+        </View>
       </View>
     );
   }
@@ -41,19 +39,11 @@ class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#EEEEEE',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  todayContainer: {
+    height: 200,
+    backgroundColor: '#1ca8f4',
   },
 });
 
