@@ -4,21 +4,12 @@ import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import type { ForecastType } from '../models/Forecast';
 import { getIcon } from '../utils/imageUtils';
+import { days } from '../dateUtils';
 
 type Props = {
   item: ForecastType,
   onPressItem: (item: ForecastType) => void,
 };
-
-const days = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-];
 
 class ListItem extends Component<Props> {
   onPressItem = () => {
@@ -86,6 +77,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 16,
     fontWeight: '400',
+    color: 'rgba(0, 0, 0, 0.87)',
   },
   secondaryText: {
     color: 'rgba(0, 0, 0, 0.54)',

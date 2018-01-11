@@ -4,26 +4,12 @@ import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import type { ForecastType } from '../models/Forecast';
 import { getArt } from '../utils/imageUtils';
+import { monthsShort } from '../dateUtils';
 
 type Props = {
   today: ?ForecastType,
   navigate: (routeName: string, params: { item: ForecastType }) => void,
 };
-
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
 
 const renderToday = (today: ForecastType) => {
   const date = new Date(today.date);
@@ -31,7 +17,7 @@ const renderToday = (today: ForecastType) => {
   return (
     <View>
       <Text style={styles.date}>{`Today, ${date.getDate()} ${
-        months[date.getMonth()]
+        monthsShort[date.getMonth()]
       }, London`}</Text>
       <View style={styles.content}>
         <View style={styles.column}>
@@ -56,7 +42,7 @@ const renderToday = (today: ForecastType) => {
 class TodayHeader extends Component<Props> {
   onPressToday = () => {
     if (this.props.today) {
-      this.props.navigate('Detail', { item: this.props.today });
+      this.props.navigate('Detail', { item: this.props.today, isToday: true });
     }
   };
 

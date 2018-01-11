@@ -10,5 +10,9 @@ export type ForecastType = {
     },
     maxtemp_f: number,
     mintemp_f: number,
+    avghumidity: number,
+    maxwind_mph: number,
+    avgvis_miles: number,
+    totalprecip_in: number,
   },
 };
