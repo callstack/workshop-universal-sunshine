@@ -1,12 +1,13 @@
 /* @flow */
 
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import type { ForecastType } from '../models/Forecast';
 import { getIcon } from '../utils/imageUtils';
 
 type Props = {
   item: ForecastType,
+  onPressItem: (item: ForecastType) => void,
 };
 
 const days = [
@@ -19,36 +20,48 @@ const days = [
   'Saturday',
 ];
 
-const ListItem = (props: Props) => {
-  const { item } = props;
-  return (
-    <View style={styles.container}>
-      <View style={[styles.contentLeft, styles.shrink]}>
-        <Image style={styles.icon} source={getIcon(item.day.condition.code)} />
-        <View style={styles.shrink}>
-          <Text style={styles.highlightText}>
-            {days[new Date(item.date).getDay()]}
-          </Text>
-          <Text
-            style={styles.secondaryText}
-            ellipsizeMode="tail"
-            numberOfLines={1}
-          >
-            {item.day.condition.text}
-          </Text>
+class ListItem extends Component<Props> {
+  onPressItem = () => {
+    this.props.onPressItem(this.props.item);
+  };
+
+  render() {
+    const { item } = this.props;
+
+    return (
+      <TouchableOpacity onPress={this.onPressItem}>
+        <View style={styles.container}>
+          <View style={[styles.contentLeft, styles.shrink]}>
+            <Image
+              style={styles.icon}
+              source={getIcon(item.day.condition.code)}
+            />
+            <View style={styles.shrink}>
+              <Text style={styles.highlightText}>
+                {days[new Date(item.date).getDay()]}
+              </Text>
+              <Text
+                style={styles.secondaryText}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+              >
+                {item.day.condition.text}
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.highlightText}>{`${Math.round(
+              item.day.maxtemp_f
+            )} °F`}</Text>
+            <Text style={styles.secondaryText}>{`${Math.round(
+              item.day.mintemp_f
+            )} °F`}</Text>
+          </View>
         </View>
-      </View>
-      <View>
-        <Text style={styles.highlightText}>{`${Math.round(
-          item.day.maxtemp_f
-        )} °F`}</Text>
-        <Text style={styles.secondaryText}>{`${Math.round(
-          item.day.mintemp_f
-        )} °F`}</Text>
-      </View>
-    </View>
-  );
-};
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

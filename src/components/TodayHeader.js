@@ -1,12 +1,13 @@
 /* @flow */
 
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import type { ForecastType } from '../models/Forecast';
 import { getArt } from '../utils/imageUtils';
 
 type Props = {
   today: ?ForecastType,
+  navigate: (routeName: string, params: { item: ForecastType }) => void,
 };
 
 const months = [
@@ -52,11 +53,23 @@ const renderToday = (today: ForecastType) => {
   );
 };
 
-const TodayHeader = (props: Props) => {
-  const { today } = props;
+class TodayHeader extends Component<Props> {
+  onPressToday = () => {
+    if (this.props.today) {
+      this.props.navigate('Detail', { item: this.props.today });
+    }
+  };
 
-  return <View style={styles.container}>{today && renderToday(today)}</View>;
-};
+  render() {
+    const { today } = this.props;
+
+    return (
+      <TouchableOpacity activeOpacity={0.7} onPress={this.onPressToday}>
+        <View style={styles.container}>{today && renderToday(today)}</View>
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
