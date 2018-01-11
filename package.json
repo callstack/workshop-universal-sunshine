@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "flow": "flow",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "haul": "haul",
+    "start-android": "haul --platform android",
+    "start-ios": "haul --platform ios",
+    "start-all": "haul --platform all"
   },
   "dependencies": {
     "react": "16.2.0",
@@ -19,6 +22,7 @@
     "eslint": "4.13.1",
     "eslint-config-callstack-io": "1.0.1",
     "flow-bin": "0.61.0",
+    "haul": "1.0.0-beta.12",
     "jest": "22.0.4",
     "react-test-renderer": "16.2.0"
   },

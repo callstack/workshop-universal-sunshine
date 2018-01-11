@@ -54,3 +54,6 @@ buck-out/
 
 # Custom
 secrets.js
+# Haul
+#
+haul-debug.log
