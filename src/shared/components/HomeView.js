@@ -3,37 +3,34 @@
 import React, { Component } from 'react';
 import { StyleSheet, StatusBar, View } from 'react-native';
 
-import withWeather from 'shared/components/withWeather';
 import ListItem from 'shared/components/ListItem';
 import type { ForecastType } from 'shared/models/Forecast';
 import TodayHeader from 'shared/components/TodayHeader';
 
 type Props = {
   data: ?Array<ForecastType>,
-  isFetching: boolean, // eslint-disable-line react/no-unused-prop-types
-  fetchWeatherData: () => void,
-  navigation: {
-    navigate: (routeName: string, params: { item: ForecastType }) => void,
-  },
+  onPressItem: ({ item: ForecastType, isToday?: boolean }) => void,
 };
 
-class HomeScreen extends Component<Props> {
-  componentDidMount() {
-    this.props.fetchWeatherData();
-  }
+type PressItem = {
+  item: ForecastType,
+  isToday?: boolean,
+};
 
-  onPressItem = (item: ForecastType) => {
-    this.props.navigation.navigate('Detail', { item });
+class HomeView extends Component<Props> {
+  onPressItem = (data: PressItem) => {
+    const { item, isToday = false } = data;
+    this.props.onPressItem({ item, isToday });
   };
 
   render() {
-    const { data, navigation } = this.props;
+    const { data } = this.props;
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <TodayHeader
-          navigate={navigation.navigate}
+          onPressItem={this.onPressItem}
           today={(data && data[0]) || null}
         />
         <View>
@@ -60,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withWeather(HomeScreen);
+export default HomeView;

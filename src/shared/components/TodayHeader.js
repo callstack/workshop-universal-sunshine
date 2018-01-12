@@ -8,7 +8,7 @@ import { monthsShort } from 'shared/utils/dateUtils';
 
 type Props = {
   today: ?ForecastType,
-  navigate: (routeName: string, params: { item: ForecastType }) => void,
+  onPressItem: ({ item: ForecastType, isToday?: boolean }) => void,
 };
 
 const renderToday = (today: ForecastType) => {
@@ -42,7 +42,7 @@ const renderToday = (today: ForecastType) => {
 class TodayHeader extends Component<Props> {
   onPressToday = () => {
     if (this.props.today) {
-      this.props.navigate('Detail', { item: this.props.today, isToday: true });
+      this.props.onPressItem({ item: this.props.today, isToday: true });
     }
   };
 

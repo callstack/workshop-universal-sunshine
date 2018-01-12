@@ -8,12 +8,12 @@ import { days } from 'shared/utils/dateUtils';
 
 type Props = {
   item: ForecastType,
-  onPressItem: (item: ForecastType) => void,
+  onPressItem: ({ item: ForecastType, isToday?: boolean }) => void,
 };
 
 class ListItem extends Component<Props> {
   onPressItem = () => {
-    this.props.onPressItem(this.props.item);
+    this.props.onPressItem({ item: this.props.item });
   };
 
   render() {

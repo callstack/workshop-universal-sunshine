@@ -8,23 +8,13 @@ import type { ForecastType } from 'shared/models/Forecast';
 import { getArt } from 'shared/utils/imageUtils';
 
 type Props = {
-  navigation: {
-    state: {
-      params: {
-        item: ForecastType,
-        isToday: boolean,
-      },
-    },
-  },
+  item: ForecastType,
+  isToday: boolean,
 };
 
-class DetailScreen extends Component<Props> {
-  static navigationOptions = {
-    headerTitle: 'Detail',
-  };
-
+class DetailView extends Component<Props> {
   render() {
-    const { item, isToday = false } = this.props.navigation.state.params;
+    const { item, isToday = false } = this.props;
     const date = new Date(item.date);
 
     return (
@@ -119,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailScreen;
+export default DetailView;
