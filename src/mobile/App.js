@@ -1,8 +1,8 @@
 /* @flow */
 
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './scenes/HomeScreen';
-import DetailScreen from './scenes/DetailScreen';
+import HomeScreen from '../shared/scenes/HomeScreen';
+import DetailScreen from '../shared/scenes/DetailScreen';
 
 const App = StackNavigator(
   {

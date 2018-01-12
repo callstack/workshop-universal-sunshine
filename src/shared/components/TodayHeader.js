@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import type { ForecastType } from '../models/Forecast';
-import { getArt } from '../utils/imageUtils';
-import { monthsShort } from '../dateUtils';
+import type { ForecastType } from 'shared/models/Forecast';
+import { getArt } from 'shared/utils/imageUtils';
+import { monthsShort } from 'shared/utils/dateUtils';
 
 type Props = {
   today: ?ForecastType,

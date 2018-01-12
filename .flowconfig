@@ -38,6 +38,10 @@ munge_underscores=true
 module.name_mapper='^[./a-zA-Z0-9$_-]+\.\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|webp\|m4v\|mov\|mp4\|mpeg\|mpg\|webm\|aac\|aiff\|caf\|m4a\|mp3\|wav\|html\|pdf\)$' -> 'RelativeImageStub'
 module.name_mapper='^react-navigation' -> 'emptyObject'
 
+module.name_mapper='^shared' ->'<PROJECT_ROOT>/src/shared'
+module.name_mapper='^web' ->'<PROJECT_ROOT>/src/web'
+module.name_mapper='^mobile' ->'<PROJECT_ROOT>/src/mobile'
+
 module.file_ext=.js
 module.file_ext=.jsx
 module.file_ext=.json

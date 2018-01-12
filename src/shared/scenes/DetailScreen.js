@@ -2,9 +2,10 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
-import { days, months } from '../dateUtils';
-import type { ForecastType } from '../models/Forecast';
-import { getArt } from '../utils/imageUtils';
+
+import { days, months } from 'shared/utils/dateUtils';
+import type { ForecastType } from 'shared/models/Forecast';
+import { getArt } from 'shared/utils/imageUtils';
 
 type Props = {
   navigation: {

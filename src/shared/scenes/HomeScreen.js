@@ -3,14 +3,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, StatusBar, View } from 'react-native';
 
-import withWeather from '../components/withWeather';
-import ListItem from '../components/ListItem';
-import type { ForecastType } from '../models/Forecast';
-import TodayHeader from '../components/TodayHeader';
+import withWeather from 'shared/components/withWeather';
+import ListItem from 'shared/components/ListItem';
+import type { ForecastType } from 'shared/models/Forecast';
+import TodayHeader from 'shared/components/TodayHeader';
 
 type Props = {
   data: ?Array<ForecastType>,
-  isFetching: boolean,
+  isFetching: boolean, // eslint-disable-line react/no-unused-prop-types
   fetchWeatherData: () => void,
   navigation: {
     navigate: (routeName: string, params: { item: ForecastType }) => void,
