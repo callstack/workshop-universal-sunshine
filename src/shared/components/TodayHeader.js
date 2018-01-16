@@ -1,7 +1,14 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform,
+} from 'react-native';
 import type { ForecastType } from 'shared/models/Forecast';
 import { getArt } from 'shared/utils/imageUtils';
 import { monthsShort } from 'shared/utils/dateUtils';
@@ -64,6 +71,12 @@ const styles = StyleSheet.create({
     paddingLeft: 16 + 16 + 36, // To align with list items
     paddingRight: 32,
     backgroundColor: '#1ca8f4',
+    ...Platform.select({
+      web: {
+        height: 250,
+        justifyContent: 'center',
+      },
+    }),
   },
   content: {
     paddingVertical: 16,

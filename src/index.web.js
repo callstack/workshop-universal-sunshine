@@ -1,12 +1,14 @@
 /* @flow */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { AppRegistry } from 'react-native';
 
 import App from 'web/App';
 import registerServiceWorker from 'web/registerServiceWorker';
-import './index.css';
 
-/* $FlowFixMe */
-ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+/* $FlowFixMe */
+AppRegistry.registerComponent('App', () => App);
+/* $FlowFixMe */
+AppRegistry.runApplication('App', {
+  rootTag: document.getElementById('root'),
+});

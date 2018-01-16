@@ -10,6 +10,7 @@ import TodayHeader from 'shared/components/TodayHeader';
 type Props = {
   data: ?Array<ForecastType>,
   onPressItem: ({ item: ForecastType, isToday?: boolean }) => void,
+  style?: any, // eslint-disable-line flowtype/no-weak-types
 };
 
 type PressItem = {
@@ -24,10 +25,10 @@ class HomeView extends Component<Props> {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, style } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         <StatusBar barStyle="light-content" />
         <TodayHeader
           onPressItem={this.onPressItem}

@@ -10,15 +10,16 @@ import { getArt } from 'shared/utils/imageUtils';
 type Props = {
   item: ForecastType,
   isToday: boolean,
+  style?: any, // eslint-disable-line flowtype/no-weak-types
 };
 
 class DetailView extends Component<Props> {
   render() {
-    const { item, isToday = false } = this.props;
+    const { item, isToday = false, style } = this.props;
     const date = new Date(item.date);
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         <Text style={[styles.title, styles.primary]}>
           {isToday ? 'Today' : days[date.getDay()]}
         </Text>

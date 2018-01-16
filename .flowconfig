@@ -20,6 +20,7 @@
 .*/node_modules/metro/.*
 
 .*/node_modules/react-navigation/.*
+.*/node_modules/react-native-web/.*
 
 [include]
 
@@ -37,6 +38,7 @@ munge_underscores=true
 
 module.name_mapper='^[./a-zA-Z0-9$_-]+\.\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|webp\|m4v\|mov\|mp4\|mpeg\|mpg\|webm\|aac\|aiff\|caf\|m4a\|mp3\|wav\|html\|pdf\)$' -> 'RelativeImageStub'
 module.name_mapper='^react-navigation' -> 'emptyObject'
+module.name_mapper='^react-native-web' -> 'react-native'
 
 module.name_mapper='^shared' ->'<PROJECT_ROOT>/src/shared'
 module.name_mapper='^web' ->'<PROJECT_ROOT>/src/web'
