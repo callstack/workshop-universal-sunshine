@@ -10,8 +10,9 @@
     "start-android": "BABEL_ENV=native haul --platform android",
     "start-ios": "BABEL_ENV=native haul --platform ios",
     "start-all": "BABEL_ENV=native haul --platform all",
-    "test-mobile": "BABEL_ENV=native jest --config ./jest/config.mobile.js",
+    "test-mobile": "jest --config ./jest/config.mobile.js",
     "test-web": "jest --config ./jest/config.web.js",
+    "test-detox": "BABEL_ENV=native detox build -c ios.sim.debug && detox test -c ios.sim.debug",
     "web": "node web/scripts/start.js"
   },
   "dependencies": {
@@ -59,6 +60,7 @@
   "devDependencies": {
     "babel-jest": "22.0.4",
     "babel-preset-react-native": "4.0.0",
+    "detox": "^7.0.0-alpha.0",
     "eslint": "4.13.1",
     "eslint-config-callstack-io": "1.0.1",
     "eslint-import-resolver-webpack": "^0.8.4",
@@ -69,5 +71,24 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "./jest/config.detox.js",
+    "specs": ".",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/WorkshopUniversalSunshine.app",
+        "build": "xcodebuild -project ios/WorkshopUniversalSunshine.xcodeproj -scheme WorkshopUniversalSunshine -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/WorkshopUniversalSunshine.app",
+        "build": "xcodebuild -project ios/WorkshopUniversalSunshine.xcodeproj -scheme WorkshopUniversalSunshine -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      }
+    }
   }
 }

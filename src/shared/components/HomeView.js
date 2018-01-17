@@ -28,7 +28,7 @@ class HomeView extends Component<Props> {
     const { data, style } = this.props;
 
     return (
-      <View style={[styles.container, style]}>
+      <View testID="homeView" style={[styles.container, style]}>
         <StatusBar barStyle="light-content" />
         <TodayHeader
           onPressItem={this.onPressItem}
