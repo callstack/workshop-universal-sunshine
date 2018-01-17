@@ -1,8 +1,15 @@
+/**
+ * @flow
+ */
+import common from './config.common';
+
 module.exports = {
+  ...common,
   preset: 'react-native',
   rootDir: '../',
-  moduleNameMapper: {
-    'shared/(.*)': '<rootDir>/src/shared/$1.js',
+  haste: {
+    defaultPlatform: 'ios',
+    platforms: ['android', 'ios'],
   },
   testMatch: [
     // Test `__tests__` files within mobile and shared
