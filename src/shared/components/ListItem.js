@@ -8,6 +8,7 @@ import { days } from 'shared/utils/dateUtils';
 
 type Props = {
   item: ForecastType,
+  isUS?: boolean,
   onPressItem: ({ item: ForecastType, isToday?: boolean }) => void,
 };
 
@@ -17,7 +18,9 @@ class ListItem extends Component<Props> {
   };
 
   render() {
-    const { item } = this.props;
+    const { item, isUS = true } = this.props;
+
+    const unit = isUS ? 'F' : 'C';
 
     return (
       <TouchableOpacity onPress={this.onPressItem}>
@@ -43,10 +46,10 @@ class ListItem extends Component<Props> {
           <View>
             <Text style={styles.highlightText}>{`${Math.round(
               item.day.maxtemp_f
-            )} °F`}</Text>
+            )} °${unit}`}</Text>
             <Text style={styles.secondaryText}>{`${Math.round(
               item.day.mintemp_f
-            )} °F`}</Text>
+            )} °${unit}`}</Text>
           </View>
         </View>
       </TouchableOpacity>

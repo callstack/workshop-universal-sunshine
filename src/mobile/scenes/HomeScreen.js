@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import withWeather from 'shared/components/withWeather';
 import type { ForecastType } from 'shared/models/Forecast';
 import HomeView from 'shared/components/HomeView';
+import { View } from 'react-native';
 
 type Props = {
   data: ?Array<ForecastType>,
