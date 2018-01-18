@@ -1,9 +1,12 @@
 /* @flow */
 
 import * as React from 'react';
+import { NativeModules } from 'react-native';
 
 import type { ForecastType } from 'shared/models/Forecast';
 import { APIXU_API_KEY } from '../../secrets';
+
+const MyLocation = NativeModules.MyLocation;
 
 type State = {
   isFetching: boolean,
@@ -18,7 +21,14 @@ const withWeather = (Component: React.ComponentType<*>) =>
     };
 
     fetchWeatherData = async () => {
-      const url = `https://api.apixu.com/v1/forecast.json?key=${APIXU_API_KEY}&q=London&days=7`;
+      const {
+        longitude,
+        latitude,
+        cityName,
+      } = await MyLocation.getCurrentLocation();
+
+      global.myCurrentLocation = cityName; // TODO use something different, like AsyncStorage
+      const url = `https://api.apixu.com/v1/forecast.json?key=${APIXU_API_KEY}&q=${latitude},${longitude}&days=7`;
       try {
         const res = await fetch(url);
         const data = await res.json();

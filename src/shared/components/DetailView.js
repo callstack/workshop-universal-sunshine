@@ -44,7 +44,9 @@ class DetailView extends Component<Props> {
           </View>
         </View>
         <View style={styles.extraInfo}>
-          <Text style={styles.extraInfoText}>Location: London</Text>
+          <Text style={styles.extraInfoText}>
+            {`Location: ${global.myCurrentLocation}`}
+          </Text>
           <Text style={styles.extraInfoText}>{`Humidity: ${
             item.day.avghumidity
           }`}</Text>

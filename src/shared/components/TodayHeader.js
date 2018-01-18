@@ -25,7 +25,7 @@ const renderToday = (today: ForecastType) => {
     <View>
       <Text style={styles.date}>{`Today, ${date.getDate()} ${
         monthsShort[date.getMonth()]
-      }, London`}</Text>
+      }, ${global.myCurrentLocation}`}</Text>
       <View style={styles.content}>
         <View style={styles.column}>
           <Text style={styles.max}>{`${Math.round(
